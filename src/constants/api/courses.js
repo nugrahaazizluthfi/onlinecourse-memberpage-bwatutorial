@@ -1,5 +1,4 @@
-import Axios from 'axios';
-import axios from 'src/config/axios';
+import axios from 'configs/axios';
 
 export default {
   all: (options = { params: { status: 'published' } }) =>

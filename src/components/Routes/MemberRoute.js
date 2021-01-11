@@ -8,9 +8,9 @@ const MemberRoute = ({
   location,
   ...rest
 }) => {
-  const ok = localStorage.getItem('token');
+  const ok = localStorage.getItem('BWAMICRO:token');
 
-  localStorage.removeItem('redirect');
+  localStorage.removeItem('BWAMICRO:redirect');
 
   return (
     <Route

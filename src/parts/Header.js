@@ -18,64 +18,58 @@ function Header({ onLight, location }) {
       </div>
       <ul className="flex">
         <li>
-          <Link href="/">
-            <a
-              className={[
-                linkColor,
-                'text-white hover:text-teal-500 text-lg px-6 py-3',
-              ].join(' ')}
-            >
-              Home
-            </a>
+          <Link
+            to="/"
+            className={[
+              linkColor,
+              'text-white hover:text-teal-500 text-lg px-6 py-3',
+            ].join(' ')}
+          >
+            Home
           </Link>
         </li>
         <li>
-          <Link href="/">
-            <a
-              className={[
-                linkColor,
-                'text-white hover:text-teal-500 text-lg px-6 py-3',
-              ].join(' ')}
-            >
-              Pricing
-            </a>
+          <Link
+            to="/"
+            className={[
+              linkColor,
+              'text-white hover:text-teal-500 text-lg px-6 py-3',
+            ].join(' ')}
+          >
+            Pricing
           </Link>
         </li>
         <li>
-          <Link href="/">
-            <a
-              className={[
-                linkColor,
-                'text-white hover:text-teal-500 text-lg px-6 py-3',
-              ].join(' ')}
-            >
-              Features
-            </a>
+          <Link
+            to="/"
+            className={[
+              linkColor,
+              'text-white hover:text-teal-500 text-lg px-6 py-3',
+            ].join(' ')}
+          >
+            Features
           </Link>
         </li>
         <li>
-          <Link href="/">
-            <a
-              className={[
-                linkColor,
-                'text-white hover:text-teal-500 text-lg px-6 py-3',
-              ].join(' ')}
-            >
-              Story
-            </a>
+          <Link
+            to="/"
+            className={[
+              linkColor,
+              'text-white hover:text-teal-500 text-lg px-6 py-3',
+            ].join(' ')}
+          >
+            Story
           </Link>
         </li>
         <li>
-          <Link href="/">
-            <a
-              target="_blank"
-              rel="noopener noereferrer"
-              link={linkCTA}
-              className="bg-indigo-800 transition-all duration-200 text-white hover:text-teal-500 text-lg px-6 py-3 ml-6"
-            >
-              {textCTA}
-            </a>
-          </Link>
+          <a
+            target="_blank"
+            rel="noopener noereferrer"
+            link={linkCTA}
+            className="bg-indigo-800 transition-all duration-200 text-white hover:text-teal-500 text-lg px-6 py-3 ml-6"
+          >
+            {textCTA}
+          </a>
         </li>
       </ul>
     </header>

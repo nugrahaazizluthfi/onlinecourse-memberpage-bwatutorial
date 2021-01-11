@@ -11,31 +11,35 @@ export default function Footer() {
           <h6 className="text-white">Company</h6>
           <ul className="mt-4">
             <li className="mt-2">
-              <Link href="/#">
-                <a className="text-indigo-500 hover:text-teal-500 hover:underline">
-                  API Developer
-                </a>
+              <Link
+                to="/#"
+                className="text-indigo-500 hover:text-teal-500 hover:underline"
+              >
+                API Developer
               </Link>
             </li>
             <li className="mt-2">
-              <Link href="/#">
-                <a className="text-indigo-500 hover:text-teal-500 hover:underline">
-                  Career
-                </a>
+              <Link
+                to="/#"
+                className="text-indigo-500 hover:text-teal-500 hover:underline"
+              >
+                Career
               </Link>
             </li>
             <li className="mt-2">
-              <Link href="/#">
-                <a className="text-indigo-500 hover:text-teal-500 hover:underline">
-                  Story
-                </a>
+              <Link
+                to="/#"
+                className="text-indigo-500 hover:text-teal-500 hover:underline"
+              >
+                Story
               </Link>
             </li>
             <li className="mt-2">
-              <Link href="/#">
-                <a className="text-indigo-500 hover:text-teal-500 hover:underline">
-                  New Soon
-                </a>
+              <Link
+                to="/#"
+                className="text-indigo-500 hover:text-teal-500 hover:underline"
+              >
+                New Soon
               </Link>
             </li>
           </ul>
@@ -44,31 +48,35 @@ export default function Footer() {
           <h6 className="text-white">Student</h6>
           <ul className="mt-4">
             <li className="mt-2">
-              <Link href="/#">
-                <a className="text-indigo-500 hover:text-teal-500 hover:underline">
-                  Get Student
-                </a>
+              <Link
+                to="/#"
+                className="text-indigo-500 hover:text-teal-500 hover:underline"
+              >
+                Get Student
               </Link>
             </li>
             <li className="mt-2">
-              <Link href="/#">
-                <a className="text-indigo-500 hover:text-teal-500 hover:underline">
-                  Our Pathskills
-                </a>
+              <Link
+                to="/#"
+                className="text-indigo-500 hover:text-teal-500 hover:underline"
+              >
+                Our Pathskills
               </Link>
             </li>
             <li className="mt-2">
-              <Link href="/#">
-                <a className="text-indigo-500 hover:text-teal-500 hover:underline">
-                  All Features
-                </a>
+              <Link
+                to="/#"
+                className="text-indigo-500 hover:text-teal-500 hover:underline"
+              >
+                All Features
               </Link>
             </li>
             <li className="mt-2">
-              <Link href="/#">
-                <a className="text-indigo-500 hover:text-teal-500 hover:underline">
-                  Refund Policy
-                </a>
+              <Link
+                to="/#"
+                className="text-indigo-500 hover:text-teal-500 hover:underline"
+              >
+                Refund Policy
               </Link>
             </li>
           </ul>

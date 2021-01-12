@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ReactComponent as Logo } from 'assets/images/logo.svg';
 import { Link, withRouter } from 'react-router-dom';
 import propTypes from 'prop-types';
 
 function Header({ onLight, location }) {
+  const [user, setUser] = useState(() => null);
+  useEffect(() => {
+    const userCookies = decodeURIComponent(window.document.cookie)?.split(';');
+    
+  }, []);
+
   const linkColor = onLight ? 'text-gray-900' : 'text-white';
   const linkCTA =
     location.pathname.indexOf('/login') > -1

@@ -103,7 +103,7 @@ function LoginForm({ history }) {
             type="submit"
             className="w-full bg-orange-500 hover:bg-orange-400 transition-all duration-200 focus:outline-none shadow-inner text-white px-6 py-3"
           >
-            Daftar Now
+            Masuk
           </button>
         </form>
       </div>
@@ -124,7 +124,7 @@ function LoginForm({ history }) {
             style={{ width: 290 }}
           >
             <p className="text-gray-900 mb-2">
-              Metode belajar yang santai seperti nonton drakor di Netflix
+              Semua materi terstruktur baik dan mentor yang sangat lihai
             </p>
             <span className="text-gray-600">Alyssa, Apps Developer</span>
           </div>

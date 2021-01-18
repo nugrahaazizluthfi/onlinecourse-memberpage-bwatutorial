@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function NotFound() {
+export default function ServerError() {
   return (
     <section className="h-screen flex flex-col items-center">
       <img
         style={{ height: '50%' }}
         src={`${process.env.PUBLIC_URL}/assets/images/illustration-notfound.jpg`}
-        alt="Oops! We're lost you"
+        alt="Oops! Server Error"
       />
-      <h1 className="text-3xl text-gray-900 mt-12">Oops! We're lost you.</h1>
+      <h1 className="text-3xl text-gray-900 mt-12">Oops! Server Error.</h1>
       <p className="text-lg text-gray-600 mt-4 mb-8 lg:w-3/12 xl:w-3/12 mx-auto text-center">
-        The page that you requested is not found in our system.
+        Mostly this cause by the server was busy, please try later.
       </p>
       <Link
         to={'/'}

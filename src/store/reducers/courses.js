@@ -31,6 +31,19 @@ export default function (state = initialState, action) {
         total: action.payload.length ?? 0,
         status: 'ok',
       };
+    case WATCH_COURSE:
+      console.log(state);
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [action.payload.id]: {
+            ...state.data[action.payload.id],
+            ...action.payload,
+          },
+        },
+        status: 'ok',
+      };
     case MESSAGE_COURSE:
       return {
         ...state,

@@ -18,8 +18,8 @@ export default function errorHandler(error) {
 
         return users
           .refresh({
-            refresh_token: session.refresh_token,
-            email: session.email,
+            refresh_token: session?.refresh_token,
+            email: session?.email,
           })
           .then((res) => {
             if (res.data) {

@@ -5,6 +5,8 @@ import { Link, withRouter } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 
+import usersAction from 'constants/api/users';
+
 function Sidebar({ match, history }) {
   const getNavLinkClass = (path) => {
     return match.path === path
@@ -15,8 +17,11 @@ function Sidebar({ match, history }) {
   const users = useSelector((state) => state.users);
 
   function logout() {
-    history.push('/login');
-    localStorage.removeItem('BWAMICRO:token');
+    usersAction.logout().then((res) => {
+      console.log(res);
+      localStorage.removeItem('BWAMICRO:token');
+      history.push('/login');
+    });
   }
   return (
     <aside
@@ -30,7 +35,11 @@ function Sidebar({ match, history }) {
         <div className="flex flex-col text-center mt-8">
           <div className="border border-indigo-500 mx-auto p-2 inline-flex rounded-full overflow-hidden mb-3">
             {users?.avatar ? (
-              <img src={users?.avatar} alt={users?.name} />
+              <img
+                className="object-cover w-24 h-24"
+                src={users?.avatar}
+                alt={users?.name}
+              />
             ) : (
               <DefaultUser
                 className="fill-indigo-500"

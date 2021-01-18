@@ -13,6 +13,8 @@ import Unauthenticated from 'pages/401';
 import MyClass from 'pages/MyClass';
 import Register from 'pages/Register';
 import Joined from 'pages/Joined';
+import DetailsClass from 'pages/DetailsClass';
+import Settings from 'pages/Settings';
 
 import { setAuthorizationHeader } from 'configs/axios';
 import { populateProfile } from 'store/actions/users';
@@ -47,6 +49,17 @@ function App() {
             exact
             path="/joined/:class"
             component={Joined}
+          ></MemberRoute>
+          <MemberRoute
+            exact
+            path="/courses/:class/:chapter/:uid"
+            component={DetailsClass}
+          ></MemberRoute>
+          <MemberRoute path="/settings" component={Settings}></MemberRoute>
+          <MemberRoute
+            exact
+            path="/courses/:class/"
+            component={DetailsClass}
           ></MemberRoute>
           <Route path="*" component={NotFound}></Route>
         </Switch>

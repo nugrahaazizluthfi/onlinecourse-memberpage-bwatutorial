@@ -1,15 +1,15 @@
-import React from 'react';
-import propTypes from 'prop-types';
+import React from "react";
+import propTypes from "prop-types";
 
 export default function Input({
+  value,
   error,
   name,
   onChange,
   placeholder,
   labelName,
   inputClassName,
-  value,
-  type = 'text',
+  type,
 }) {
   return (
     <div className="flex flex-col mb-4">
@@ -17,26 +17,26 @@ export default function Input({
         <label
           htmlFor={name}
           className={[
-            'text-lg mb-2',
-            error ? 'text-red-500' : 'text-gray-900',
-          ].join(' ')}
+            "text-lg mb-2",
+            error ? "text-red-500" : "text-gray-900",
+          ].join(" ")}
         >
           {labelName}
         </label>
       )}
       <input
         name={name}
-        type={type}
         onChange={onChange}
+        type={type}
         className={[
-          'bg-white focus:outline-none border px-6 py-3 w-full border-gray-600 focus:border-teal-500',
+          "bg-white focus:outline-none border w-full px-6 py-3 w-1/2  ",
           error
-            ? 'focus:border-red-500 border-red-500 text-red-500'
-            : 'focus:border-teal-500 border-gray-600 text-gray-600',
+            ? "border-red-500 text-red-500"
+            : "focus:border-teal-500 border-gray-600 text-gray-600",
           inputClassName,
-        ].join(' ')}
+        ].join(" ")}
         value={value}
-        placeholder={placeholder ?? 'Please change placeholder'}
+        placeholder={placeholder ?? "Please change placeholder"}
       />
       <span className="text-red-500 pt-2">{error}</span>
     </div>
@@ -51,5 +51,5 @@ Input.propTypes = {
   placeholder: propTypes.string,
   labelName: propTypes.string,
   inputClassName: propTypes.string,
-  type: propTypes.oneOf(['text', 'email', 'password']),
+  type: propTypes.oneOf(["text", "email", "password"]),
 };

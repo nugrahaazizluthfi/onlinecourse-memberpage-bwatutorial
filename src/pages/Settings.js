@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from "react";
 
-import Sidebar from 'parts/Sidebar';
+import { useSelector } from "react-redux";
 
-import SettingForm from 'parts/SettingForm';
-
+import Sidebar from "parts/Sidebar";
+import SettingForm from "parts/SettingForm";
 export default function Settings() {
   useEffect(() => {
     window.scroll(0, 0);
@@ -16,14 +15,17 @@ export default function Settings() {
     <div className="flex">
       <Sidebar></Sidebar>
 
-      <main className="flex">
-        <div className="px-16">
-          <section className="flex flex-col mt-8">
-            <h1 className="text-4xl text-gray-900 font-medium">Settings</h1>
-            <p className="text-lg text-gray-600">
-              Secure your data information
+      <main className="flex-1">
+        <div className="px-4 sm:px-16">
+          <section className="flex flex-col mt-8 pl-12 sm:pl-0">
+            <h1 className="text-xl sm:text-4xl text-gray-900 font-medium">
+              Settings
+            </h1>
+            <p className="text-sm sm:text-lg text-gray-600">
+              Secure your data informations
             </p>
           </section>
+
           <SettingForm details={DETAILS}></SettingForm>
         </div>
       </main>

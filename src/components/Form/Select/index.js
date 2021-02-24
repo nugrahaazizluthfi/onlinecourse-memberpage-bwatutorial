@@ -11,18 +11,18 @@ export default function Select({
   onClick,
   fallbackText,
 }) {
-  const [toggle, setToggle] = useState(() => false);
+  const [toggle, settoggle] = useState(() => false);
   const selectWrapper = useRef(null);
 
   const items = Children.toArray(children);
 
   function toggleSelect() {
-    setToggle(() => !toggle);
+    settoggle(() => !toggle);
   }
 
   function clickOutside(event) {
     if (selectWrapper && !selectWrapper.current.contains(event.target))
-      setToggle(false);
+      settoggle(false);
   }
 
   useEffect(() => {
@@ -52,10 +52,8 @@ export default function Select({
           <span className={value === '' ? 'text-gray-500' : ''}>
             {selected?.props.children ?? fallbackText}
           </span>
-
-          <div className="transition-all duration-200 border-gray-400 border-b-2 transform rotate-45 translate-y-1 w-2 h-2"></div>
+          <div className="transition-all duration-200 border-gray-400 border-b-2 border-r-2 transform rotate-45 translate-y-1 w-2 h-2 "></div>
         </div>
-
         <div
           className={[
             'absolute left-0 bg-white border border-gray-600 py-3 w-full',
@@ -66,7 +64,7 @@ export default function Select({
             return (
               <div
                 key={index}
-                className="cursor-pointer px-4 py-1 bg-white hover:bg-gray-400 transtion-all duration-200"
+                className="cursor-pointer px-4 py-1 bg-white hover:bg-gray-400 transition-all duration-200"
                 onClick={() =>
                   onClick({ target: { name: name, value: item.props.value } })
                 }
@@ -83,10 +81,11 @@ export default function Select({
 
 Select.propTypes = {
   onClick: propTypes.func.isRequired,
-  labelName: propTypes.string,
-  id: propTypes.string,
+  value: propTypes.oneOfType([propTypes.string, propTypes.number]).isRequired,
   name: propTypes.string.isRequired,
   fallbackText: propTypes.string,
-  value: propTypes.oneOfType([propTypes.string, propTypes.number]),
+
+  labelName: propTypes.string,
+  id: propTypes.string,
   className: propTypes.string,
 };

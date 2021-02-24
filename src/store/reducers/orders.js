@@ -1,9 +1,8 @@
 import {
-  FETCH_COURSES,
-  WATCH_COURSE,
-  STATUS_COURSES,
-  MESSAGE_COURSE,
-} from "constants/types/courses";
+  FETCH_ORDERS,
+  STATUS_ORDERS,
+  MESSAGE_ORDER,
+} from "constants/types/orders";
 
 const initialState = {
   data: {},
@@ -14,38 +13,25 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case STATUS_COURSES:
+    case STATUS_ORDERS:
       return {
         ...state,
         status: action.payload,
       };
 
-    case FETCH_COURSES:
+    case FETCH_ORDERS:
       return {
         ...state,
         data:
           action.payload?.reduce?.((acc, item) => {
-            acc[item.course_id] = item;
+            acc[item.id] = item;
             return acc;
           }, {}) ?? {},
         total: action.payload?.length ?? 0,
         status: "ok",
       };
 
-    case WATCH_COURSE:
-      return {
-        ...state,
-        data: {
-          ...state.data,
-          [action.payload.id]: {
-            ...state.data[action.payload.id],
-            ...action.payload,
-          },
-        },
-        status: "ok",
-      };
-
-    case MESSAGE_COURSE:
+    case MESSAGE_ORDER:
       return {
         ...state,
         message: action.payload,

@@ -1,34 +1,36 @@
-import React, { useState, useRef } from 'react';
-import { withRouter } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { useDispatch } from 'react-redux';
+import React, { useState, useRef } from "react";
+import { withRouter } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-import Select from 'components/Form/Select';
-import Input from 'components/Form/Input';
-import useForm from 'helpers/hooks/useForm';
-import fieldErrors from 'helpers/fieldErrors';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-import users from 'constants/api/users';
-import media from 'constants/api/media';
-import { populateProfile } from 'store/actions/users';
+import Select from "components/Form/Select";
+import Input from "components/Form/Input";
 
-import image2base64 from 'utils/image2base64';
+import useForm from "helpers/hooks/useForm";
+import fieldErrors from "helpers/fieldErrors";
 
-import { ReactComponent as DefaultUser } from 'assets/images/default-avatar.svg';
+import users from "constants/api/users";
+import media from "constants/api/media";
+
+import { populateProfile } from "store/actions/users";
+
+import image2base64 from "utils/image2base64";
+
+import { ReactComponent as DefaultUser } from "assets/images/default-avatar.svg";
 
 function SettingForm({ details }) {
   const dispatch = useDispatch();
-
   const addPicture = useRef(null);
 
   const [state, setKey, setState] = useForm({
-    name: details?.name ?? '',
-    email: details?.email ?? '',
-    profession: details?.profession ?? '',
-    avatar: details?.avatar ?? '',
-    password: details?.password ?? '',
-    otherProfession: details?.otherProfession ?? '',
+    name: details?.name ?? "",
+    email: details?.email ?? "",
+    profession: details?.profession ?? "",
+    avatar: details?.avatar ?? "",
+    password: details?.password ?? "",
+    otherProfession: details?.otherProfession ?? "",
   });
 
   const [errors, setErrors] = useState(null);
@@ -47,17 +49,17 @@ function SettingForm({ details }) {
 
   async function submit(e) {
     e.preventDefault();
+
     const payload = {
       name: state.name,
       email: state.email,
       password: state.password,
       profession: state.profession,
     };
-
-    if (payload.profession === 'others')
+    if (payload.profession === "others")
       payload.profession = state.otherProfession;
 
-    if (state.avatar.indexOf('base64') > -1) {
+    if (state.avatar.indexOf("base64") > -1) {
       const avatar = await media.upload(state.avatar);
       payload.avatar = avatar.data.image;
     }
@@ -65,10 +67,10 @@ function SettingForm({ details }) {
     users
       .update(payload)
       .then((res) => {
-        toast.success('Profile updated');
+        toast.success("Profile updated");
         setState({
           ...state,
-          password: '',
+          password: "",
         });
         setErrors(null);
         dispatch(
@@ -78,10 +80,7 @@ function SettingForm({ details }) {
           })
         );
       })
-      .catch((error) => {
-        console.log(error?.response?.data?.message);
-        setErrors(error?.response?.data?.message ?? 'errors');
-      });
+      .catch((error) => setErrors(error?.response?.data?.message ?? "errors"));
   }
 
   const ERRORS = fieldErrors(errors);
@@ -120,7 +119,7 @@ function SettingForm({ details }) {
                 onClick={() => addPicture.current.click()}
                 className="bg-gray-300 hover:bg-gray-400 transition-all duration-200 focus:outline-none shadow-inner text-white px-6 py-3 mt-3"
               >
-                Daftar Now
+                Browse
               </button>
             </div>
           </div>
@@ -128,35 +127,35 @@ function SettingForm({ details }) {
       </section>
       <section className="flex flex-col mt-8">
         <div className="flex items-center pb-24">
-          <div className="w-full">
+          <div className="w-full sm:w-4/12">
             <form onSubmit={submit}>
               <Input
-                error={ERRORS?.name.message}
+                value={state.name}
+                error={ERRORS?.name?.message}
                 name="name"
                 onChange={setKey}
                 placeholder="Your Name"
                 labelName="Full Name"
-                value={state.name}
               />
 
               <Input
-                error={ERRORS?.email.message}
+                value={state.email}
+                error={ERRORS?.email?.message}
                 name="email"
                 type="email"
                 onChange={setKey}
                 placeholder="Your email address"
                 labelName="Email Address"
-                value={state.email}
               />
 
               <Input
-                error={ERRORS?.password.message}
+                value={state.password}
+                error={ERRORS?.password?.message}
                 name="password"
                 type="password"
                 onChange={setKey}
-                placeholder="Your password"
+                placeholder="Your Password"
                 labelName="Password"
-                value={state.password}
               />
 
               <Select
@@ -170,23 +169,24 @@ function SettingForm({ details }) {
                 <option value="Web Developer">Web Designer</option>
                 <option value="Frontend Developer">Frontend Developer</option>
                 <option value="Backend Developer">Backend Developer</option>
-                <option value="others">Others</option>
+                <option value="others">others</option>
               </Select>
 
-              {state.profession === 'others' && (
+              {state.profession === "others" && (
                 <Input
+                  value={state.otherProfession}
                   error={ERRORS?.otherProfession?.message}
                   name="otherProfession"
+                  type="text"
                   onChange={setKey}
                   placeholder="Your occupation"
-                  labelName="Other's Occupation"
-                  value={state.otherProfession}
+                  labelName="Other Occupation"
                 />
               )}
 
               <button
                 type="submit"
-                className="bg-orange-500 hover:bg-orange-400 transition-all duration-200 focus:outline-none shadow-inner text-white px-6 py-3"
+                className="bg-orange-500 hover:bg-orange-400 transition-all duration-200 focus:outline-none shadow-inner text-white px-6 py-3 mt-4"
               >
                 Simpan
               </button>
@@ -197,5 +197,4 @@ function SettingForm({ details }) {
     </>
   );
 }
-
 export default withRouter(SettingForm);

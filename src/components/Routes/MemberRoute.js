@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Redirect, withRouter } from 'react-router-dom';
+import React from "react";
+import { Route, Redirect, withRouter } from "react-router-dom";
 
 const MemberRoute = ({
   component: Component,
@@ -8,9 +8,9 @@ const MemberRoute = ({
   location,
   ...rest
 }) => {
-  const ok = localStorage.getItem('BWAMICRO:token');
-
-  localStorage.removeItem('BWAMICRO:redirect');
+  const ok = localStorage.getItem("BWAMICRO:token");
+  console.log(rest);
+  localStorage.removeItem("BWAMICRO:redirect");
 
   return (
     <Route
@@ -18,7 +18,7 @@ const MemberRoute = ({
       render={(props) =>
         ok ? (
           <Component {...props} />
-        ) : path === '/joined/:class' ? (
+        ) : path === "/joined/:class" ? (
           <Redirect to={`/login?path=${location.pathname}`} />
         ) : (
           <Redirect to={`/private?path=${location.pathname}`} />

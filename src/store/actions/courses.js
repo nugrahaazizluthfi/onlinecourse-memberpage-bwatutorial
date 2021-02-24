@@ -3,7 +3,7 @@ import {
   WATCH_COURSE,
   STATUS_COURSES,
   MESSAGE_COURSE,
-} from 'constants/types/courses';
+} from "constants/types/courses";
 
 export const statusCourses = (status) => ({
   type: STATUS_COURSES,
